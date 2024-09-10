@@ -1,0 +1,123 @@
+<mvc:View controllerName="wwl.controller.ManagerStocksItemView"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.table"
+          xmlns:core="sap.ui.core">
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <FlexBox class="sapUiResponsiveMargin">
+
+                    <FlexBox>
+                        <core:Icon
+                                src="sap-icon://arrow-left"
+                                class="size5 sapUiSmallMarginEnd"
+                                color="#FFFFFF"
+                                press="onPressStocksSelectItemPage">
+                            <core:layoutData>
+                                <FlexItemData growFactor="1"/>
+                            </core:layoutData>
+                        </core:Icon>
+                        <Label text="Selection article"/>
+                    </FlexBox>
+
+                </FlexBox>
+
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table rows="{path:'ItemModelSL>/'}">
+                <columns>
+                    <Column width="250px">
+                    </Column>
+                    <Column width="300px">
+                    </Column>
+                    <Column width="150px">
+                    </Column>
+                    <Column width="50px">
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Label class="centeredLabel" text="Code article" />
+                            <Text text="{ItemModelSL>/ItemCode}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                                    <Label text="Code barre"/>
+                                    <Text text="{ItemModelSL>/BarCode}" />
+                                    <Button text="Ajouter un Code Barre" press="onPressToAddCodeBars"/>
+                                    <core:Icon
+                                            src="sap-icon://print"
+                                            class="size8 sapUiSmallMarginBegin"
+                                            color="#000000"
+                                            press="onPressPrintCodeBars">
+                                        <core:layoutData>
+                                            <FlexItemData growFactor="3"/>
+                                        </core:layoutData>
+                                    </core:Icon>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Stock réel"/>
+                            <Text text="{ItemModelSL>/ItemWarehouseInfoCollection/0/InStock}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Stock réservé"/>
+                            <Text text="{ItemModelSL>/ItemWarehouseInfoCollection/0/Committed}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Stock commandé"/>
+                            <Text text="{ItemModelSL>/ItemWarehouseInfoCollection/0/Ordered}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Stock disponible"/>
+                            <Text text="{ItemModelSL>/stockDispo}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Designation de l'article"/>
+                            <Text text="{ItemModelSL>/ItemName}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="N° de série"/>
+                            <Button text="SN" press="serialNumManager"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Stockage"/>
+                            <Button text="Whs" press="onPressWhs"/>
+                        </cells>
+
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Code frs"/>
+                            <HBox alignItems="Center">
+                                <Text text="{ItemInStockManager>/CardCode}"/>
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

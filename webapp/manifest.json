@@ -31,15 +31,12 @@
       "sap_belize"
     ]
   },
-
   "sap.ui5": {
     "_version": "1.1.0",
     "rootView": {
       "viewName": "wwl.view.App",
       "type": "XML"
-
     },
-
     "dependencies": {
       "minUI5Version": "1.30.0",
       "libs": {
@@ -82,7 +79,8 @@
         "viewPath": "wwl.view",
         "controlId": "MasterApp",
         "controlAggregation": "pages",
-        "targetAggregation": "pages"
+        "targetAggregation": "pages",
+        "target": "not found"
       },
       "routes": [
         {
@@ -94,10 +92,105 @@
           "pattern": "",
           "name": "Master",
           "view": "Master"
+        },
+        {
+          "pattern": "ControlePage",
+          "name": "ControlePage",
+          "view": "ControlePage"
+        },
+        {
+          "pattern": "ReceptionChoicePage",
+          "name": "ReceptionChoicePage",
+          "view": "ReceptionChoicePage"
+        },
+        {
+          "pattern": "ReceptionChoiceListPage",
+          "name": "ReceptionChoiceListPage",
+          "view": "ReceptionChoiceListPage"
+        },
+        {
+          "pattern": "ReceptionSelectBusinessPartnersPage",
+          "name": "ReceptionSelectBusinessPartnersPage",
+          "view": "ReceptionSelectBusinessPartnersPage"
+        },
+        {
+          "pattern": "ReceptionSelectItem/{CardCode}",
+          "name": "ReceptionSelectItemPage",
+          "target": "ReceptionSelectItem"
+        },
+        {
+          "pattern": "ReceptionSelectPurchaseOrder/{CardCode}/{ItemCode}",
+          "name": "ReceptionSelectPurchaseOrderPage",
+          "target": "ReceptionSelectPurchaseOrder"
+        },
+        {
+          "pattern": "ReceptionCreateDraft/{DocEntry}/{CardCode}/{ItemCode}",
+          "name": "ReceptionCreateDraftPage",
+          "target": "ReceptionCreateDraft"
+        },
+        {
+         "pattern": "ManagerStocksSelectItemPage",
+          "name": "ManagerStocksSelectItemPage",
+          "view": "ManagerStocksSelectItemPage"
+        },
+        {
+          "pattern": "ManagerStocksItemView/{ItemCode}",
+          "name": "ManagerStocksItemViewPage",
+          "target": "ManagerStocksItemView"
+        },
+        {
+          "pattern": "PreparationOrderViewPage",
+          "name": "PreparationOrderViewPage",
+          "view": "PreparationOrderViewPage"
+        },
+        {
+          "pattern": "PreparationItemsView/{DocEntry}",
+          "name": "PreparationItemsViewPage",
+          "target": "PreparationItemsView"
+        },
+        {
+          "pattern": "ControlPreparationItemView/{DocEntry}",
+          "name": "ControlPreparationItemsViewPage",
+          "target": "ControlPreparationItemView"
+        },
+        {
+          "pattern": "ControlPreparationListPage",
+          "name": "ControlPreparationListPage",
+          "view": "ControlPreparationListPage"
         }
-      ]
+      ],
+      "targets": {
+        "ReceptionSelectItem": {
+          "viewName": "ReceptionSelectItemPage",
+          "viewLevel": 1
+        },
+        "ReceptionSelectPurchaseOrder": {
+          "viewName": "ReceptionSelectPurchaseOrderPage",
+          "viewLevel": 2
+        },
+        "ReceptionCreateDraft": {
+          "viewName": "ReceptionCreateDraftPage",
+          "viewLevel": 3
+        },
+        "notfound": {
+          "viewName": "NotFound",
+          "viewLevel": 4
+        },
+        "PreparationItemsView": {
+          "viewName":"PreparationItemsViewPage",
+          "viewLevel": 1
+        },
+        "ControlPreparationItemView": {
+          "viewName": "ControlPreparationItemsViewPage",
+          "viewLevel": 1
+        },
+        "ManagerStocksItemView": {
+          "viewName":"ManagerStocksItemViewPage",
+          "viewLevel": 1
+        }
+      }
     },
-    "config":  {
+    "config": {
       "sample": {
         "stretch": true,
         "files": [

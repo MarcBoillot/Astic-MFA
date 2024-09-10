@@ -25,7 +25,48 @@
 .sapUiError {
     color: red;
 }
-
 .sapUiWarning {
     color: orange;
+}
+.buttonMenu {
+    width: 270px;
+    height: 270px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    box-sizing: border-box;
+    background-color: #e0e0e0;
+    border-style: none;
+}
+.buttonMenu:active {
+    background-color: #e0e0e0;
+    border: 2px solid black;
+}
+.customMarginBottomStock{
+    margin-bottom: 40px;
+}
+.customMarginTopStock{
+    margin-top: 140px;
+}
+.customFontSizeStock{
+    font-size: 40px;
+}
+.horizontalLineStock {
+    height: 2px;
+    width: 100px;
+    background-color: #000000;
+    margin: 10px 10px;
+    align-items: center;
+}
+.customMarginTopAccueil{
+    margin-top: 80px;
+}
+.customMarginCardAccueil{
+    margin: 40px;
+}
+.centeredLabel{
+    display: flex;
+    align-items: center;
 }

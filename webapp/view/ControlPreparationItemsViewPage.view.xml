@@ -1,0 +1,125 @@
+<mvc:View controllerName="wwl.controller.ControlPreparationItemView"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.table"
+          xmlns:core="sap.ui.core">
+
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressPreparationOrderViewPage">
+                    <core:layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Mes commandes" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox>
+                <items>
+                    <l:Table
+                            rows="{path: 'DocumentLinesModelSL>/'}"
+                            selectionMode="MultiToggle"
+                            enableSelectAll="false"
+                            ariaLabelledBy="title">
+                        <l:columns>
+                            <l:Column width="175px">
+                                <Label text="Code barre"/>
+                                <l:template>
+                                    <Text text="{DocumentLinesModelSL>BarCode}"
+                                          wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="275px">
+                                <Label text="Designation"/>
+                                <l:template>
+                                    <Text text="{DocumentLinesModelSL>ItemDescription}" wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="150px">
+                                <Label text="Code article"/>
+                                <l:template>
+                                    <Text text="{DocumentLinesModelSL>ItemCode}"
+                                          wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="100px">
+                                <Label text="Qté saisie"/>
+                                <l:template>
+                                    <Input value="{DocumentLinesModelSL>QuantityEntered}"
+                                           placeholder="Entrer une quantité"
+                                           liveChange="onQuantityChange"
+                                           enabled="{= !${DocumentLinesModelSL>isValidated}}"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="75px">
+                                <Label text="Qté rest"/>
+                                <l:template>
+                                    <Text text="{=${DocumentLinesModelSL>QuantityEntered}}/{DocumentLinesModelSL>Quantity}"
+                                          wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="60px">
+                                <Label text="S.N"/>
+                                <l:template>
+                                    <Button
+                                            text="SN" press="onPressShowSerialNumbers"
+                                            enabled="{=!${DocumentLinesModelSL>isSerializable}}"
+                                    />
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="75px">
+                                <Label text="Stock"/>
+                                <l:template>
+                                    <Button text="Voir" press="onPressShowWhs"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="65px">
+                                <Label text="Valider"/>
+                                <l:template>
+                                    <core:Icon
+                                            src="sap-icon://accept"
+                                            class="size5 sapUiSmallMarginBegin"
+                                            color="#000000"
+                                            press="onPressValidationLine"
+                                            enabled="{= !${DocumentLinesModelSL>isValidated}}"
+                                    >
+                                        <core:layoutData>
+                                            <FlexItemData growFactor="1"/>
+                                        </core:layoutData>
+                                    </core:Icon>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="65px">
+                                <Label text="Annuler"/>
+                                <l:template>
+                                    <core:Icon
+                                            src="sap-icon://reset"
+                                            class="size5 sapUiSmallMarginBegin"
+                                            color="#000000"
+                                            enabled="{= !${DocumentLinesModelSL>isValidated}}"
+                                            press="onPressCancelLine">
+                                        <core:layoutData>
+                                            <FlexItemData growFactor="1"/>
+                                        </core:layoutData>
+                                    </core:Icon>
+                                </l:template>
+                            </l:Column>
+                        </l:columns>
+                    </l:Table>
+                    <Button text="Valider le controle" press="onPressValidatedControle"/>
+                </items>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

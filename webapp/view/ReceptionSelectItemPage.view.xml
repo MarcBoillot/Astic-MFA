@@ -1,0 +1,60 @@
+<mvc:View controllerName="wwl.controller.ReceptionSelectItem"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core">
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressSelectBusinessPartners" >
+                    <core:layoutData>
+                        <FlexItemData growFactor="1" />
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Selection Fournisseur" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox alignItems="Center" justifyContent="Center">
+                <HBox alignItems="Center" justifyContent="Center" class="customMarginTopStock">
+                    <Label text="Scan l'article" class="customFontSizeStock"/>
+                </HBox>
+                <HBox class="customMarginBottomStock">
+                   <Button text="scan" press="onPressReceptionScanItem"/>
+                </HBox>
+                <HBox class="customMarginBottomStock">
+                    <Toolbar class="horizontalLineStock"/>
+                    <Label text="OU"/>
+                    <Toolbar class="horizontalLineStock"/>
+                </HBox>
+                <HBox>
+                    <Label text="Code de l'article" class="customFontSizeStock"/>
+                </HBox>
+                <HBox>
+                    <ComboBox
+                            class="sapUiSmallMarginBottom"
+                            showClearIcon="true"
+                            items="{ReceptionItemsListModelSL>/}"
+                            selectedKey="{itemWithItemCodeModelSL>/ItemCode}"
+                            change="showListOfItems"
+                            selectionChange="selectedItem"
+                    >
+                        <items>
+                            <core:ListItem
+                                    text="{ReceptionItemsListModelSL>ItemCode}"
+                                    key="{ReceptionItemsListModelSL>ItemCode}"/>
+                        </items>
+                    </ComboBox>
+                </HBox>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

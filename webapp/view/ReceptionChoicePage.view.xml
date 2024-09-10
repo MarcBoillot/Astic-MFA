@@ -1,0 +1,43 @@
+<mvc:View controllerName="wwl.controller.ReceptionChoice"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+>
+
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressAccueil">
+                    <core:layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Accueil" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox  alignItems="Center" justifyContent="Center" class="customMarginTopAccueil">
+                <HBox alignItems="Center" justifyContent="Center">
+                    <GenericTile class="customMarginCardAccueil tileLayout buttonMenu" header=""
+                                 subheader="Liste des receptions" press="onPressReceptionChoiceList" >
+                        <TileContent />
+                    </GenericTile>
+                    <GenericTile class="customMarginCardAccueil tileLayout buttonMenu" header=""
+                                 subheader="Création d'une reception" press="onPressReceptionSelectBusinessPartners" >
+                        <TileContent />
+                    </GenericTile>
+                </HBox>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

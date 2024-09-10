@@ -1,0 +1,73 @@
+<mvc:View controllerName="wwl.controller.ReceptionSelectBusinessPartners"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core">
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressReceptionChoicePage" >
+                    <core:layoutData>
+                        <FlexItemData growFactor="1" />
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Selection" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox alignItems="Center" justifyContent="Center">
+                <HBox alignItems="Center" justifyContent="Center" class="customMarginTopStock">
+                    <Label text="Nom fournisseur" class="customFontSizeStock"/>
+                </HBox>
+                <HBox class="customMarginBottomStock">
+                    <ComboBox
+                              class="sapUiSmallMarginBottom"
+                              showClearIcon="true"
+                              items="{ReceptionSuppliersListModelSL>/}"
+                              selectedKey="{inputCardName>/CardName}"
+                              change="showListOfSuppliers"
+                              selectionChange="selectedSupplierWithCardName"
+                    >
+                        <items>
+                            <core:ListItem
+                                    text="{ReceptionSuppliersListModelSL>CardName}"
+                                    key="{ReceptionSuppliersListModelSL>CardCode}"/>
+                        </items>
+                    </ComboBox>
+                </HBox>
+                <HBox class="customMarginBottomStock">
+                    <Toolbar class="horizontalLineStock"/>
+                    <Label text="OU"/>
+                    <Toolbar class="horizontalLineStock"/>
+                </HBox>
+                <HBox>
+                    <Label text="Code Fournisseur" class="customFontSizeStock"/>
+                </HBox>
+                <HBox>
+                    <ComboBox
+                            class="sapUiSmallMarginBottom"
+                            showClearIcon="true"
+                            items="{ReceptionSuppliersListModelSL>/}"
+                            selectedKey="{inputCardCode>/CardCode}"
+                            change="showListOfSuppliersWithCardCode"
+                            selectionChange ="selectedSupplierWithCardCode"
+                    >
+                        <items>
+                            <core:ListItem
+                                    text="{ReceptionSuppliersListModelSL>CardCode}"
+                                    key="{ReceptionSuppliersListModelSL>CardCode}"/>
+                        </items>
+                    </ComboBox>
+                </HBox>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

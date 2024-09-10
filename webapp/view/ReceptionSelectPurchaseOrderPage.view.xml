@@ -1,0 +1,79 @@
+<mvc:View controllerName="wwl.controller.ReceptionSelectPurchaseOrder"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.table"
+          xmlns:core="sap.ui.core"
+          xmlns:mdc="sap.ui.mdc"
+>
+    <f:DynamicPage>
+        <!--        <Text text="{path:'PurchaseOrdersModel>DocDate', formatter: '.Formatter.formatDate'}"-->
+        <!--              wrapping="false"/>-->
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size4 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressNewDraft">
+                    <core:layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Nouvelle reception" class="sapUiSmallMarginBegin"/>
+                <ToolbarSpacer/>
+                <ToolbarSpacer/>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox>
+                <IconTabBar>
+                    <items>
+                        <IconTabFilter text="Pré-enregistré en cours">
+                            <Button text="Terminer ma reception" enabled="false" press=""
+                                    id="ValidationButton"/>
+                            <Button text="Scanner un nouvel article" press="onPressAddItem"/>
+                            <l:Table
+                                    rows="{draftModel>/currentDraft/DocumentLines}"
+                                    selectionMode="Multi"
+                                    enableSelectAll="false"
+                                    ariaLabelledBy="title"
+                                    rowSelectionChange="onSelectChange">
+
+                                <l:columns>
+                                    <l:Column width="200px">
+                                        <Label text="N°Document"/>
+                                        <l:template>
+                                            <Text text="{draftModel>ItemCode}" wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+                                    <l:Column width="150px">
+                                        <Label text="Designation de l'article"/>
+                                        <l:template>
+                                            <Text text="{draftModel>ItemDescription}"
+                                                  wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+                                    <l:Column width="75px">
+                                        <Label text="Quantité"/>
+                                        <l:template>
+                                            <Text text="{draftModel>Quantity}"
+                                                  wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+                                </l:columns>
+                            </l:Table>
+                        </IconTabFilter>
+                        <IconTabFilter text="">
+
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

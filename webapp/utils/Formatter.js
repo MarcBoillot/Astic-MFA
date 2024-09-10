@@ -5,8 +5,11 @@ sap.ui.define([
     "use strict";
     return {
 
-        formatDate:function (DocDate) {
-            return new Date(DocDate).toLocaleDateString('fr')
+        formatDate:function (DocDueDate) {
+            if(!DocDueDate){
+                return null
+            }
+            return new Date(DocDueDate).toLocaleDateString('fr-FR')
         },
     }
 });

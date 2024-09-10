@@ -1,0 +1,87 @@
+<mvc:View controllerName="wwl.controller.Preparation"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.table"
+          xmlns:core="sap.ui.core">
+
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressAccueil">
+                    <core:layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Accueil" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+
+            <VBox>
+
+
+                    <items>
+
+
+                            <l:Table
+                                    id="table2"
+                                    rows="{ordersModelSL>/}"
+                                    selectionMode="MultiToggle"
+                                    enableSelectAll="false"
+                                    ariaLabelledBy="title">
+                                <l:columns>
+                                    <l:Column width="100px">
+                                        <Label text="Type"/>
+                                        <l:template>
+                                            <Text text="{ordersModelSL>Type}" wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+                                    <l:Column width="300px">
+                                        <Label text="N° de commande"/>
+                                        <l:template>
+                                            <Text text="{ordersModelSL>DocEntry}" wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+
+                                    <l:Column width="200px">
+                                        <Label text="Date"/>
+                                        <l:template>
+                                            <Text text="{ordersModelSL>DocDueDate}"
+                                                  wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+
+                                    <l:Column>
+                                        <Label text="Status "/>
+                                        <l:template>
+                                            <Text text="{= ${ordersModelSL>Status} === 'C' ? 'Closed' :  'Open' }"
+                                                  wrapping="false"/>
+                                        </l:template>
+                                    </l:Column>
+
+                                    <l:Column width="150px">
+                                        <Label text="Details"/>
+                                        <l:template>
+                                            <Button text="Voir détails" press="onShowItemsInOfSQL"/>
+                                        </l:template>
+                                    </l:Column>
+
+                                </l:columns>
+                            </l:Table>
+
+                    </items>
+
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

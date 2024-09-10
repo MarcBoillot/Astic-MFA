@@ -1,0 +1,159 @@
+<mvc:View controllerName="wwl.controller.ReceptionChoiceList"
+          xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.table">
+    <f:DynamicPage id="item">
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressReceptionChoicePage">
+                    <core:layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Selection" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <l:TreeTable rows="{path:'ReceptionsModelSL>/', parameters: {arrayNames:['DocumentLines']}}"
+                         selectionMode="MultiToggle"
+                         enableSelectAll="false"
+                         ariaLabelledBy="title">
+                <l:columns>
+                    <l:Column width="150px">
+                        <Label text="Numéro document"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>DocNum}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="100px">
+                        <Label text="Code Frs"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>CardCode}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="150px">
+                        <Label text="Fournisseurs"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>CardName}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="100px">
+                        <Label text="Date"/>
+                        <l:template>
+                            <Text text="{path:'ReceptionsModelSL>DocDate', formatter: '.Formatter.formatDate'}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="100px">
+                        <Label text="Code article"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>ItemCode}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="210px">
+                        <Label text="Designation"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>ItemDescription}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="50px">
+                        <Label text="Qté"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>Quantity}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column width="150px">
+                        <Label text="N°de la commande"/>
+                        <l:template>
+                            <Text text="{ReceptionsModelSL>BaseEntry}"/>
+                        </l:template>
+                    </l:Column>
+                    <l:Column>
+                        <l:template>
+                            <core:Icon
+                                    src="sap-icon://camera"
+                                    class="size5 sapUiSmallMarginBegin"
+                                    color="#FFFFFF"
+                                    press="">
+                                <core:layoutData>
+                                    <FlexItemData growFactor="1"/>
+                                </core:layoutData>
+                            </core:Icon>
+                        </l:template>
+                    </l:Column>
+                </l:columns>
+            </l:TreeTable>
+<!--            <VBox>-->
+<!--                <items>-->
+
+
+<!--&lt;!&ndash;                            <Label text="Fournisseurs"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <Tree&ndash;&gt;-->
+<!--&lt;!&ndash;                                    items="{path:'ReceptionsModelSL>/', parameters: {arrayNames:['DocumentLines']}}">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <StandardTreeItem title="{ReceptionsModelSL>CardName} {ReceptionsModelSL>ItemCode}  {ReceptionsModelSL>ItemDescription} {ReceptionsModelSL>Quantity}"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            </Tree>&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;                    <l:Table&ndash;&gt;-->
+<!--&lt;!&ndash;                            rows="{ReceptionsModelSL>/}"&ndash;&gt;-->
+<!--&lt;!&ndash;                            selectionMode="MultiToggle"&ndash;&gt;-->
+<!--&lt;!&ndash;                            enableSelectAll="false"&ndash;&gt;-->
+<!--&lt;!&ndash;                            ariaLabelledBy="title">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <l:columns>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <l:Column width="300px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <Label text="Fournisseur"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <Text text="{ReceptionsModelSL>CardName}" wrapping="false"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </l:Column>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <l:Column width="100px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <Label text="Code Frs"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <Text text="{ReceptionsModelSL>CardCode}" wrapping="false"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </l:Column>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <l:Column width="200px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <Label text="Date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <Text text="{ReceptionsModelSL>DocDueDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          wrapping="false"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </l:Column>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <l:Column width="100px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <Label text="Status "/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <Text text="{= ${ReceptionsModelSL>Status} === 'C' ? 'Terminée' :  'En cours' }"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          wrapping="false"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </l:Column>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <l:Column width="150px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <Label text="Details"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <Button text="Voir détails" press="onPressDetailsOnReceipt"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </l:template>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </l:Column>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        </l:columns>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </l:Table>&ndash;&gt;-->
+<!--                </items>-->
+<!--            </VBox>-->
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
+

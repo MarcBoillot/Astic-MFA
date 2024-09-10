@@ -1,0 +1,73 @@
+<mvc:View controllerName="wwl.controller.ManagerStocksSelectItem"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core">
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressMasterView" >
+                    <core:layoutData>
+                        <FlexItemData growFactor="1" />
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Accueil" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox alignItems="Center" justifyContent="Center">
+                <HBox class="customMarginTopStock">
+                    <Label text="Designation de l'article" class="customFontSizeStock"/>
+                </HBox>
+                <HBox class="customMarginBottomStock">
+                    <ComboBox
+                            class="sapUiSmallMarginBottom"
+                            showClearIcon="true"
+                            items="{StockItemsListModelSL>/}"
+                            selectedKey="{itemWithItemNameModelSL>/ItemName}"
+                            change="showListOfItemsName"
+                            selectionChange="selectedItemName"
+                    >
+                        <items>
+                            <core:ListItem
+                                    text="{StockItemsListModelSL>ItemName}"
+                                    key="{StockItemsListModelSL>ItemCode}"/>
+                        </items>
+                    </ComboBox>
+                </HBox>
+                <HBox class="customMarginBottomStock">
+                    <Toolbar class="horizontalLineStock"/>
+                    <Label text="OU"/>
+                    <Toolbar class="horizontalLineStock"/>
+                </HBox>
+                <HBox>
+                    <Label text="Code de l'article" class="customFontSizeStock"/>
+                </HBox>
+                <HBox>
+                    <ComboBox
+                            class="sapUiSmallMarginBottom"
+                            showClearIcon="true"
+                            items="{StockItemsListModelSL>/}"
+                            selectedKey="{itemWithItemCodeModelSL>/ItemCode}"
+                            change="showListOfItemsCode"
+                            selectionChange="selectedItemCode"
+                    >
+                        <items>
+                            <core:ListItem
+                                    text="{StockItemsListModelSL>ItemCode}"
+                                    key="{StockItemsListModelSL>ItemCode}"/>
+                        </items>
+                    </ComboBox>
+                </HBox>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

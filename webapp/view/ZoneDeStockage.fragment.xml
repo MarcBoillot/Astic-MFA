@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:l="sap.ui.table"
+        id="ItemsFragment">
+    <!--        xmlns:x="sap.ui.layout"-->
+    <!--        xmlns:w="sap.ui.webc.main"-->
+
+    <Dialog contentWidth="1200px"
+            id="itemsDialog"
+            title="{= 'DocEntry: ' + ${selectedRowModelSQL>/DocEntry}}"
+    >
+        <content>
+            <OverflowToolbar style="Clear">
+                <Button text="Add Item" press="onOpenDialogAddItemSQL"/>
+                <ToolbarSpacer/>
+                <Button text="Generate BL" press="onGenerateBl"/>
+            </OverflowToolbar>
+            <l:Table
+                    rows="{path: 'selectedRowModelSQL>/DocumentLines'}"
+            >
+                <l:columns>
+
+                    <l:Column width="80px">
+                        <Label text="Emplacement"/>
+                        <l:template>
+                            <Text text="{selectedRowModelSQL>CodeBars}"
+                                  wrapping="false"/>
+                        </l:template>
+                    </l:Column>
+
+                    <l:Column width="200px">
+                        <Label text="Quantité"/>
+                        <l:template>
+                            <Text text="{selectedRowModelSQL>Dscription}"
+                                  wrapping="false"/>
+                        </l:template>
+                    </l:Column>
+
+                    <l:Column width="50px">
+                        <Label text="Quantité réservée"/>
+                        <l:template>
+                            <Text text="{selectedRowModelSQL>Quantity}" wrapping="false"/>
+                        </l:template>
+                    </l:Column>
+
+                </l:columns>
+            </l:Table>
+        </content>
+
+            <Button text="Fermer" press="onCloseItemsDialog"/>
+
+    </Dialog>
+</core:FragmentDefinition>

@@ -29,10 +29,6 @@ sap.ui.define([
             return this
         },
 
-        U_OB1PARAMS: function () {
-            this.target = "U_OB1PARAMS"
-            return this
-        },
 
         BinLocations: function () {
             this.target = "BinLocations"
@@ -51,26 +47,6 @@ sap.ui.define([
 
         Drafts: function () {
             this.target = "Drafts"
-            return this
-        },
-
-        InventoryCountings: function () {
-            this.target = "InventoryCountings"
-            return this
-        },
-
-        InventoryGenEntries: function () {
-            this.target = "InventoryGenEntries"
-            return this
-        },
-
-        InventoryGenExits: function () {
-            this.target = "InventoryGenExits"
-            return this
-        },
-
-        InventoryTransferRequests: function () {
-            this.target = "InventoryTransferRequests"
             return this
         },
 
@@ -94,6 +70,16 @@ sap.ui.define([
             return this
         },
 
+        BarCodes:function(){
+          this.target = "BarCodes"
+          return this
+        },
+
+        PurchaseOrders:function(){
+            this.target = "PurchaseOrders"
+            return this
+        },
+
         ProductionOrders: function () {
             this.target = "ProductionOrders"
             return this
@@ -111,6 +97,11 @@ sap.ui.define([
 
         PrintAPI: function () {
             this.target = "api"
+            return this
+        },
+
+        SeidorAPI: function(){
+            this.target = "seidorApi"
             return this
         }
     });

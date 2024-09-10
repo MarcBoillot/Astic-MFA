@@ -1,0 +1,80 @@
+<mvc:View controllerName="wwl.controller.ControlPreparationList"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.table"
+          xmlns:core="sap.ui.core"
+>
+
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <core:Icon
+                        src="sap-icon://arrow-left"
+                        class="size5 sapUiSmallMarginBegin"
+                        color="#FFFFFF"
+                        press="onPressMasterPage">
+                    <core:layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </core:layoutData>
+                </core:Icon>
+                <Label text="Accueil" class="sapUiSmallMarginBegin"/>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox>
+                <items>
+                    <l:Table
+                            rows="{OrdersModelSL>/}"
+                            selectionMode="MultiToggle"
+                            enableSelectAll="false"
+                            ariaLabelledBy="title">
+                        <l:columns>
+                            <l:Column width="200px">
+                                <Label text="Type de commande"/>
+                                <l:template>
+                                    <Text text="{=${OrdersModelSL>U_OB1TYPCDE} === '1' ? 'Accessoire' : ${OrdersModelSL>U_OB1TYPCDE} === '2' ? 'Materiel' : ${OrdersModelSL>U_OB1TYPCDE}}"
+                                          wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="200px">
+                                <Label text="Numéro de commande"/>
+                                <l:template>
+                                    <Text text="{OrdersModelSL>DocNum}" wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="150px">
+                                <Label text="Date de départ"/>
+                                <l:template>
+                                    <Text text="{path:'OrdersModelSL>DocDueDate', formatter: '.Formatter.formatDate'}"
+                                          wrapping="false"/>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="150px">
+                                <Label text="Statut"/>
+                                <l:template>
+                                    <MessageStrip
+                                            text="{OrdersModelSL>U_OB1ETATPREP}"
+                                            type="{=${OrdersModelSL>U_OB1ETATPREP} === 'P' ? 'Success' : 'Error'}"
+
+                                    ></MessageStrip>
+                                </l:template>
+                            </l:Column>
+                            <l:Column width="150px">
+                                <Label text="Button"/>
+                                <l:template>
+                                    <Button text="Voir" press="onPressShowItemsInOfSL"/>
+                                </l:template>
+                            </l:Column>
+                        </l:columns>
+                    </l:Table>
+                </items>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

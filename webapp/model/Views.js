@@ -66,8 +66,9 @@ sap.ui.define([
             return $.ajax({
                 method: 'get',
                 //.svc pour service reservé aux client server sql
-                // url: appContext.url.SL + "view.svc/" + viewName + qry,
+               // url: appContext.url.SL + "view.svc/" + viewName + qry,
                 url: appContext.url.XSODATA + "service.xsodata/" + viewName + qry + "?$format=json",
+                // url: appContext.url.SeidorAPI + qry + "?$format=json",
                 xhrFields: {withCredentials: true}
             }).fail(error => {
                 MessageBox.error(that.getError(error))
@@ -77,18 +78,17 @@ sap.ui.define([
         },
 
         getOrdersWithStock: async function () {
-            // return await this.getView('GetOrdersWithStock');
             return this.formatOrders(await this.getView('GetOrdersWithStock'))
         },
 
-        getItems: async function () {
-            return this.noFormatItems(await this.getView('GetItems'))
-        },
+        // getPurchaseOrder: async function (itemCode, cardCode) {
+        //     // return await this.getView("getPurchaseOrder_parameters", `(itemCode='${itemCode}', cardCode=${cardCode})`)
+        // },
 
 
         noFormatItems: function (data) {
-            console.log("afficher objet item ::",data.d.results)
-            return data.d.results
+            console.log("afficher objet item ::", data)
+            return data
         },
 
         noFormatOrders: function (data) {
@@ -154,8 +154,8 @@ sap.ui.define([
                         totalPriceByItem: line.totalPriceByItem,
                         totalPriceInOrder: line.totalPriceInOrder,
                         LineNum: line.LineNum,
-                        Status:line.STATUS,
-                        statusItem:[{
+                        Status: line.STATUS,
+                        statusItem: [{
                             Pending: line.Pending,
                             InPreparation: line.InPreparation,
                             Prepared: line.Prepared,

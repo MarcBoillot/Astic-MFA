@@ -1,0 +1,38 @@
+<core:FragmentDefinition id="AuthentificationFragment"
+                         xmlns="sap.m"
+                         xmlns:core="sap.ui.core"
+                         xmlns:l="sap.ui.layout"
+                         xmlns:f="sap.ui.layout.form"
+>
+    <Dialog contentWidth="500px" id="AuthentificationDialog" title="Authentification">
+        <content>
+            <f:SimpleForm layout="ResponsiveGridLayout" editable="true" columnsM="2" emptySpanS="0" width="100%">
+                <f:content>
+                    <Label text="Nom d'utilisateur ">
+                        <layoutData>
+                            <l:GridData span="L2 M2 S4"/>
+                        </layoutData>
+                    </Label>
+                    <Input id="usernameInput" value="{authModel>/username}">
+                        <layoutData>
+                            <l:GridData span="L2 M2 S6"/>
+                        </layoutData>
+                    </Input>
+                    <Label text="Mot de passe ">
+                        <layoutData>
+                            <l:GridData span="L2 M2 S4" linebreak="true"/>
+                        </layoutData>
+                    </Label>
+                    <Input id="passwordInput" type="Password" value="{authModel>/password}" change="onConnectPress">
+                        <layoutData>
+                            <l:GridData span="L2 M2 S6"/>
+                        </layoutData>
+                    </Input>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <endButton>
+            <Button text="Connexion" press="onConnectPress"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

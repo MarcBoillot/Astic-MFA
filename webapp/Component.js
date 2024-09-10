@@ -25,11 +25,13 @@ sap.ui.define([
 
             this.APP_CONTEXT = {
                 authRequired: true,
-                dbCompany: 'OB3_TEST',
+                dbCompany: 'SBO_ASTIC_TSTAPI',
                 url: {
-                   XSODATA : 'https://sap-hana.work-well.fr:4300/MB_Views_TEST/',
-                    SL: 'https://sap-hana.work-well.fr:50000/b1s/v1/',
-                    PrintAPI: 'https://sap.dpia.fr:2660/',
+                    XSODATA: 'https://sapslr.materiel-forestier.fr:4300/OB1_VIEW_XS_STOCK_MANAGER_TEST/',
+                    SL: 'https://sapslr.materiel-forestier.fr:50000/b1s/v1/',
+                    PrintAPI: 'https://sap.materiel-forestier.fr:2660/api/Print',
+                    // PrintAPI: 'https://sap.materiel-forestier.fr:2660/api/ExportPDF',
+                    SeidorAPI: 'https://sap.materiel-forestier.fr:2662/api/ExecuteQuery'
                 },
             };
 

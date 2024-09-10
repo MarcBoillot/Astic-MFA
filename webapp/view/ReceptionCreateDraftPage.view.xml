@@ -1,0 +1,116 @@
+<mvc:View controllerName="wwl.controller.ReceptionCreateDraft"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:f="sap.f"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core">
+    <f:DynamicPage>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="MFA-Astic" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+                    <Image src="./img/seidor-logo1.png" height="42px"/>
+                </FlexBox>
+                <FlexBox class="sapUiResponsiveMargin">
+
+                    <FlexBox>
+                        <core:Icon
+                                src="sap-icon://arrow-left"
+                                class="size5 sapUiSmallMarginEnd"
+                                color="#FFFFFF"
+                                press="onPressReceptionSelectItemPage">
+                            <core:layoutData>
+                                <FlexItemData growFactor="1"/>
+                            </core:layoutData>
+                        </core:Icon>
+                        <Label text="Selection article"/>
+                    </FlexBox>
+                    <FlexBox>
+                        <core:Icon
+                                src="sap-icon://accept"
+                                class="size5 sapUiSmallMarginBegin"
+                                color="#FFFFFF"
+                                press="onPressCreateDraft">
+                            <core:layoutData>
+                                <FlexItemData growFactor="1"/>
+                            </core:layoutData>
+                        </core:Icon>
+                        <Label text="Valider" class="sapUiSmallMarginBegin"/>
+                    </FlexBox>
+
+                </FlexBox>
+
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table rows="{path:'ItemModelSL>/'}">
+                <columns>
+                    <Column width="150px">
+                        <Text text="Article : {ItemModelSL>/ItemName}"/>
+                    </Column>
+                    <Column width="300px">
+                        <Text text="Fournisseur : {DraftModelSL>/CardName}"/>
+                    </Column>
+                    <Column width="100px">
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Label class="centeredLabel" text="Code article"/>
+                            <Input value="{ItemModelSL>/ItemCode}" width="500px"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Code barre"/>
+                            <Input value="{ItemModelSL>/BarCode}" width="500px"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Designation de l'article"/>
+                            <Input value="{ItemModelSL>/ItemName}" width="500px"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Qantité"/>
+                            <Input placeholder="Entrez Qté" value="{ItemModel>/Quantity}" width="100px"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="N° de série"/>
+                            <Input value="{ItemModelSL>/SerialNum}" width="500px"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="zone de stockage"/>
+
+                            <Select
+                                    width="500px"
+                                    forceSelection="false"
+                                    selectedKey="{ItemModelSL>/ItemName}"
+                                    items="{
+                                        path: 'ItemModelSL>/',
+                                        sorter: { path: 'ItemName' }
+                                    }">
+                                <core:Item key="{ItemModelSL>/ItemCode}"
+                                           text="{ItemModelSL>/ItemName}"/>
+                            </Select>
+                            <Button text="Nouvel emplacement" press="onPressNewWhs"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Defauts"/>
+                            <Input width="500px"/>
+                            <Button text="OUI" press=""/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
